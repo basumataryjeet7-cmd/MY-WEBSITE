@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro Gamer</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+html{scroll-behavior:smooth;}
+
+body{background:#0f172a;color:white;transition:0.4s;}
+.light{background:white;color:black;}
+
+nav{
+display:flex;justify-content:space-between;align-items:center;
+padding:20px 10%;background:#020617;position:sticky;top:0;
+}
+.light nav{background:#e5e7eb;}
+
+nav h1{color:#38bdf8;}
+
+nav ul{display:flex;list-style:none;gap:30px;}
+nav a{color:white;text-decoration:none;font-weight:bold;transition:.3s;}
+nav a:hover{color:#38bdf8;}
+
+.hero{
+height:90vh;display:flex;flex-direction:column;justify-content:center;
+align-items:center;text-align:center;
+background:linear-gradient(rgba(2,6,23,.7),rgba(2,6,23,.9)),
+url("https://images.unsplash.com/photo-1605902711622-cfb43c4437d1");
+background-size:cover;background-position:center;
+}
+.hero h2{font-size:60px;}
+.hero span{color:#38bdf8;}
+.hero p{margin:20px;font-size:22px;}
+
+.btn{
+padding:12px 25px;background:#38bdf8;border:none;border-radius:5px;
+color:black;font-weight:bold;cursor:pointer;transition:.3s;
+}
+.btn:hover{transform:scale(1.1);background:#0ea5e9;}
+
+section{padding:80px 10%;}
+.about{text-align:center;}
+
+.cards{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;}
+.card{
+background:#020617;padding:30px;width:250px;border-radius:10px;
+text-align:center;transition:.3s;
+}
+.card:hover{transform:translateY(-10px);box-shadow:0 0 20px #38bdf8;}
+.light .card{background:#f1f5f9;}
+
+#contact{max-width:500px;margin:auto;text-align:center;}
+input,textarea{
+width:100%;padding:10px;margin:10px 0;border:none;border-radius:5px;
+}
+
+footer{text-align:center;padding:20px;background:#020617;}
+.light footer{background:#e5e7eb;}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h1>🎮 PRO GAMER</h1>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#games">Games</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<button id="modeToggle" class="btn">🌙</button>
+</nav>
+
+<section class="hero">
+<h2>Welcome I'm <span>Pro Gamer</span></h2>
+<p id="typing"></p>
+<button id="subscribeBtn" class="btn">Subscribe</button>
+</section>
+
+<section id="about" class="about">
+<h2>About Me</h2>
+<p>I love playing FPS and Battle Royale games.
+Follow my journey and watch my gameplay!</p>
+</section>
+
+<section id="games">
+<h2 style="text-align:center">My Games</h2>
+<div class="cards">
+<div class="card">BGMI</div>
+<div class="card">Free Fire</div>
+<div class="card">GTA V</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Me</h2>
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Email">
+<textarea placeholder="Message"></textarea>
+<button id="sendBtn" class="btn">Send</button>
+</section>
+
+<footer>© 2026 Pro Gamer</footer>
+
+<script>
+// typing animation
+const words=["Streamer","Gamer","YouTuber"];
+let i=0,j=0,cur="",del=false;
+function type(){
+cur=words[i];
+document.getElementById("typing").textContent=cur.substring(0,j);
+if(!del&&j<cur.length)j++;else if(del&&j>0)j--;
+else{del=!del;if(!del)i=(i+1)%words.length;}
+setTimeout(type,150);
+}
+type();
+
+// dark mode toggle
+modeToggle.onclick=()=>document.body.classList.toggle("light");
+
+// subscribe popup
+subscribeBtn.onclick=()=>alert("Thanks for subscribing 🔥");
+
+// contact button popup
+sendBtn.onclick=()=>alert("Message Sent ✔️");
+</script>
+
+</body>
+</html>
